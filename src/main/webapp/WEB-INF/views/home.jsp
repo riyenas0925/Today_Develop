@@ -29,6 +29,25 @@
 
         <div class="content">
             <div class="row">
+                <c:forEach items="${cardList}" var="cardList">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <a href='<c:out value="${cardList.cardUrl}"/>'>
+                                        <c:out value="${cardList.cardTitle}"/>
+                                    </a>
+                                </h3>
+                                <h5 class="card-category"><i class="tim-icons icon-bell-55 text-primary"></i> <c:out value="${cardList.cardCategory}"/></h5>
+                            </div>
+                            <div class="card-body">
+                                <a><c:out value="${cardList.cardContent}"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+
+                <!--
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">
@@ -85,6 +104,8 @@
                         </div>
                     </div>
                 </div>
+            -->
+
             </div>
         </div>
         <%@ include file="include/footer.jsp" %>
