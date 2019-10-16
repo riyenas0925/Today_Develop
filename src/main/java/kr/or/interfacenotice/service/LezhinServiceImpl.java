@@ -24,8 +24,28 @@ public class LezhinServiceImpl implements LezhinService {
 
     @Override
     public List<Card> LezhinCrawl() {
-        String url = "https://tech.lezhin.com/";
+        List<Card> cardList = new ArrayList<>();
+
+        LezhinCrawlPage(1, cardList);
+        LezhinCrawlPage(2, cardList);
+        LezhinCrawlPage(3, cardList);
+        LezhinCrawlPage(4, cardList);
+
+        cardRepository.saveAll(cardList);
+
+        return cardList;
+    }
+
+    private void LezhinCrawlPage(Integer page, List<Card> cardList) {
+
+        String url = null;
         Document doc = null;
+
+        if(page == 1){
+            url = "https://tech.lezhin.com";
+        } else {
+            url = "https://tech.lezhin.com/pages/" + page;
+        }
 
         try {
             doc = Jsoup.connect(url)
@@ -37,7 +57,6 @@ public class LezhinServiceImpl implements LezhinService {
             e.printStackTrace();
         }
 
-        List<Card> cardList = new ArrayList<>();
         Elements contenList = doc.select(".post-item");
 
         for (int i = 0; i < contenList.size(); i++){
@@ -60,11 +79,8 @@ public class LezhinServiceImpl implements LezhinService {
 
             cardList.add(card);
         }
-
-        cardRepository.saveAll(cardList);
-
-        return new ArrayList<>();
     }
+
 
     public List<Card> LezhinList(){
         return cardRepository.findByDevBlog("레진코믹스");
