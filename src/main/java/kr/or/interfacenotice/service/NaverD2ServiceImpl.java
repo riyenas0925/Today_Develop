@@ -72,18 +72,4 @@ public class NaverD2ServiceImpl implements NaverD2Service {
 
         return cardList;
     }
-
-    @Override
-    public List<Card> NaverD2CardList(){
-
-        List<Card> cardList = new ArrayList<>();
-
-        /*
-        cardRepository.findAll().forEach(cardList::add);
-        */
-
-        cardList = cardRepository.RandomCardList();
-
-        return cardList;
-    }
 }

@@ -4,6 +4,6 @@ import kr.or.interfacenotice.domain.Card;
 
 import java.util.List;
 
-public interface NaverD2Service {
-    public List<Card> NaverD2Crawl();
+public interface CardService {
+    public List<Card> RandomCardList();
 }
