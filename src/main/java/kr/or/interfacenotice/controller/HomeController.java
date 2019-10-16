@@ -2,6 +2,7 @@ package kr.or.interfacenotice.controller;
 
 import kr.or.interfacenotice.domain.Card;
 import kr.or.interfacenotice.service.CardService;
+import kr.or.interfacenotice.service.LezhinService;
 import kr.or.interfacenotice.service.NaverD2Service;
 import kr.or.interfacenotice.service.WooWaBrosService;
 import lombok.extern.java.Log;
@@ -20,14 +21,18 @@ public class HomeController {
     private final CardService cardService;
     private final NaverD2Service naverD2Service;
     private final WooWaBrosService wooWaBrosService;
+    private final LezhinService lezhinService;
 
     @Autowired
     public HomeController(CardService cardService,
                           NaverD2Service naverD2Service,
-                          WooWaBrosService wooWaBrosService) {
+                          WooWaBrosService wooWaBrosService,
+                          LezhinService lezhinService) {
+
         this.cardService =cardService;
         this.naverD2Service = naverD2Service;
         this.wooWaBrosService = wooWaBrosService;
+        this.lezhinService = lezhinService;
     }
 
     @RequestMapping("/")
@@ -47,6 +52,7 @@ public class HomeController {
 
         naverD2Service.NaverD2Crawl();
         wooWaBrosService.WooWaBrosCrawl();
+        lezhinService.LezhinCrawl();
 
         return "redirect:/";
     }
