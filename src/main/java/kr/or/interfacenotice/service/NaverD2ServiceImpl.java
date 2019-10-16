@@ -59,11 +59,13 @@ public class NaverD2ServiceImpl implements NaverD2Service {
             String postTitle = (String)content.get("postTitle");
             String postHtml = (String)content.get("postHtml");
             String postCategory = "NAVER D2";
+            String cardColor = "border-success";
 
             card.setCardTitle(postTitle);
             card.setCardContent(postHtml);
             card.setCardCategory(postCategory);
             card.setCardUrl("https://d2.naver.com" + postUrl);
+            card.setCardColor(cardColor);
 
             cardList.add(card);
         }

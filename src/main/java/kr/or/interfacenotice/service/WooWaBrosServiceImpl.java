@@ -49,12 +49,13 @@ public class WooWaBrosServiceImpl implements WooWaBrosService {
             String postTitle = content.select(".post-link").text();
             String postHtml = content.select(".post-description").text();
             String postCategory = "우아한 형제들";
+            String cardColor = "border-danger";
 
             card.setCardTitle(postTitle);
             card.setCardContent(postHtml);
             card.setCardCategory(postCategory);
             card.setCardUrl("http://woowabros.github.io" + postUrl);
-
+            card.setCardColor(cardColor);
             cardList.add(card);
         }
 
