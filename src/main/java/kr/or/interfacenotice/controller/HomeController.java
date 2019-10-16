@@ -19,41 +19,21 @@ import java.util.List;
 public class HomeController {
 
     private final CardService cardService;
-    private final NaverD2Service naverD2Service;
-    private final WooWaBrosService wooWaBrosService;
-    private final LezhinService lezhinService;
 
     @Autowired
-    public HomeController(CardService cardService,
-                          NaverD2Service naverD2Service,
-                          WooWaBrosService wooWaBrosService,
-                          LezhinService lezhinService) {
+    public HomeController(CardService cardService) {
 
         this.cardService =cardService;
-        this.naverD2Service = naverD2Service;
-        this.wooWaBrosService = wooWaBrosService;
-        this.lezhinService = lezhinService;
     }
 
     @RequestMapping("/")
     public String user(Model model){
         log.info("세종대학교 학술동아리 인터페이스 공지사항 접속......");
 
-        List<Card> cardList= cardService.RandomCardList();
+        List<Card> cardList= cardService.randomCardList();
 
         model.addAttribute("cardList", cardList);
 
         return "home";
-    }
-
-    @GetMapping("/init")
-    public String init(){
-        log.info("전체 게시물 크롤링 중 ......");
-
-        naverD2Service.NaverD2Crawl();
-        wooWaBrosService.WooWaBrosCrawl();
-        lezhinService.LezhinCrawl();
-
-        return "redirect:/";
     }
 }

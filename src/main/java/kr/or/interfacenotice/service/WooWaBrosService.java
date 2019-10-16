@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface WooWaBrosService {
     public List<Card> WooWaBrosCrawl();
+
+    public List<Card> WooWaBrosList();
 }

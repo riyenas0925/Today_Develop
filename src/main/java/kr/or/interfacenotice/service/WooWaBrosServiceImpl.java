@@ -63,4 +63,9 @@ public class WooWaBrosServiceImpl implements WooWaBrosService {
 
         return new ArrayList<>();
     }
+
+    @Override
+    public List<Card> WooWaBrosList(){
+        return cardRepository.findByDevBlog("우아한 형제들");
+    }
 }

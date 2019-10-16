@@ -15,12 +15,16 @@ public class CardServiceImpl implements CardService{
     private CardRepository cardRepository;
 
     @Override
-    public List<Card> RandomCardList(){
+    public List<Card> randomCardList(){
 
-        List<Card> cardList = new ArrayList<>();
-
-        cardList = cardRepository.RandomCardList();
+        List<Card> cardList = cardRepository.RandomCardList();
 
         return cardList;
+    }
+
+    @Override
+    public List<Card> findByDevBlog(String devBlog){
+
+        return cardRepository.findByDevBlog(devBlog);
     }
 }

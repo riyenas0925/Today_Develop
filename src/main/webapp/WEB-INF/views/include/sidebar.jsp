@@ -14,22 +14,33 @@
             </a>
         </div>
         <ul class="nav">
-            <li class="active ">
-                <a href="./dashboard.html">
-                    <i class="tim-icons icon-chart-pie-36"></i>
-                    <p>Dashboard</p>
+            <li>
+                <a href="${path}/">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>Dev Blog</p>
                 </a>
             </li>
+
+            <hr style="width: 87%; height: 0.1px; background-color: rgba(255, 255, 255, 0.5);">
+
             <li>
-                <a href="./notifications.html">
-                    <i class="tim-icons icon-bell-55"></i>
-                    <p>Notifications</p>
+                <a href="${path}/devBlog/NaverD2">
+                    <i class="tim-icons icon-book-bookmark"></i>
+                    <p>Naver D2</p>
                 </a>
             </li>
+
             <li>
-                <a href="./user.html">
-                    <i class="tim-icons icon-single-02"></i>
-                    <p>User Profile</p>
+                <a href="${path}/devBlog/WooWaBros">
+                    <i class="tim-icons icon-book-bookmark"></i>
+                    <p>우아한 형제들</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="${path}/devBlog/Lezhin">
+                    <i class="tim-icons icon-book-bookmark"></i>
+                    <p>레진 코믹스</p>
                 </a>
             </li>
         </ul>

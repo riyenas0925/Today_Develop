@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface LezhinService {
     public List<Card> LezhinCrawl();
+
+    public List<Card> LezhinList();
 }

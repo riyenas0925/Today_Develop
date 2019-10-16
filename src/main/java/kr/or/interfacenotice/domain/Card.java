@@ -25,7 +25,7 @@ public class Card {
     @Column(name = "cardTitle", length = 1024)
     private String cardTitle;
 
-    @Column(name = "carCategory", length = 1024)
+    @Column(name = "cardCategory", length = 1024)
     private String cardCategory;
 
     @Column(name = "cardContent", length = 1024)

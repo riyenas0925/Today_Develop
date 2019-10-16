@@ -61,4 +61,8 @@ public class LezhinServiceImpl implements LezhinService {
 
         return new ArrayList<>();
     }
+
+    public List<Card> LezhinList(){
+        return cardRepository.findByDevBlog("레진코믹스");
+    }
 }

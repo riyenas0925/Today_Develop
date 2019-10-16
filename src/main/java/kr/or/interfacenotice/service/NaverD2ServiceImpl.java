@@ -74,4 +74,9 @@ public class NaverD2ServiceImpl implements NaverD2Service {
 
         return cardList;
     }
+
+    @Override
+    public List<Card> NaverD2List(){
+        return cardRepository.findByDevBlog("NAVER D2");
+    }
 }
