@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import javax.print.Doc;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Log
 @Service
@@ -50,18 +53,33 @@ public class WooWaBrosServiceImpl implements WooWaBrosService {
             String postHtml = content.select(".post-description").text();
             String postCategory = "우아한 형제들";
             String cardColor = "border-danger";
+            String cardDate = getPostDate(postUrl);
 
             card.setCardTitle(postTitle);
             card.setCardContent(postHtml);
             card.setCardCategory(postCategory);
             card.setCardUrl("http://woowabros.github.io" + postUrl);
             card.setCardColor(cardColor);
+            card.setCardDate(LocalDate.parse(cardDate));
+
             cardList.add(card);
         }
 
         cardRepository.saveAll(cardList);
 
         return new ArrayList<>();
+    }
+
+    private String getPostDate(String url) {
+        Pattern pattern = Pattern.compile("[0-9]{4}\\/[0-9]{2}\\/[0-p]{2}");
+        Matcher matcher = pattern.matcher(url);
+
+
+        while (matcher.find()) {
+            return matcher.group().replace('/', '-');
+        }
+
+        return "0000-00-00";
     }
 
     @Override

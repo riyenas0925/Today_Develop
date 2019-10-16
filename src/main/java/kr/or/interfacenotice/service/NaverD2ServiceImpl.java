@@ -13,8 +13,13 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Log
 @Service
@@ -60,12 +65,14 @@ public class NaverD2ServiceImpl implements NaverD2Service {
             String postHtml = (String)content.get("postHtml");
             String postCategory = "NAVER D2";
             String cardColor = "border-success";
+            String cardDate = getPostDate((Long)content.get("postPublishedAt"));
 
             card.setCardTitle(postTitle);
             card.setCardContent(postHtml);
             card.setCardCategory(postCategory);
             card.setCardUrl("https://d2.naver.com" + postUrl);
             card.setCardColor(cardColor);
+            card.setCardDate(LocalDate.parse(cardDate));
 
             cardList.add(card);
         }
@@ -73,6 +80,13 @@ public class NaverD2ServiceImpl implements NaverD2Service {
         cardRepository.saveAll(cardList);
 
         return cardList;
+    }
+
+    private String getPostDate(long time) {
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        String cardDate = dayTime.format(new Date(time));
+
+        return cardDate;
     }
 
     @Override

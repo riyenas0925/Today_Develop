@@ -44,6 +44,10 @@
                                 <div class="card-body">
                                     <a><c:out value="${cardList.cardContent}"/></a>
                                 </div>
+
+                                <div class="card-body">
+                                    <a><c:out value="${cardList.cardDate}"/></a>
+                                </div>
                             </div>
 
                         </div>

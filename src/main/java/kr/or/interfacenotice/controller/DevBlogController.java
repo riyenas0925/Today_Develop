@@ -34,10 +34,13 @@ public class DevBlogController {
 
     @GetMapping("devBlog/init")
     public String init(){
-        log.info("전체 게시물 크롤링 중 ......");
-
+        log.info("Naver D2 게시글 파싱중......");
         naverD2Service.NaverD2Crawl();
+
+        log.info("우아한 형제들 게시글 파싱중......");
         wooWaBrosService.WooWaBrosCrawl();
+
+        log.info("레진 코믹스 게시글 파싱중......");
         lezhinService.LezhinCrawl();
 
         return "redirect:/";

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class LezhinServiceImpl implements LezhinService {
             String postUrl = content.select("a").attr("href");
             String postTitle = content.select(".post-title").text();
             String postHtml = content.select(".post-summary").text();
+            String postDate = content.select(".post-date").text();
             String postCategory = "레진코믹스";
             String cardColor = "border-info";
 
@@ -54,6 +56,8 @@ public class LezhinServiceImpl implements LezhinService {
             card.setCardCategory(postCategory);
             card.setCardUrl(postUrl);
             card.setCardColor(cardColor);
+            card.setCardDate(LocalDate.parse(postDate));
+
             cardList.add(card);
         }
 

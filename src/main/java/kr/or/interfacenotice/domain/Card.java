@@ -3,10 +3,9 @@ package kr.or.interfacenotice.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -32,6 +31,8 @@ public class Card {
     private String cardContent;
 
     private String cardColor;
+
+    private LocalDate cardDate;
 
     public void Card(String cardUrl, String cardTitle, String cardCategory, String cardContent) {
         this.cardUrl = cardUrl;
