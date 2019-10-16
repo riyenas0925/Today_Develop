@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "card")
-@ToString
 @NoArgsConstructor
 public class Card {
 
@@ -31,4 +30,24 @@ public class Card {
 
     @Column(name = "cardContent", length = 1024)
     private String cardContent;
+
+    private String cardColor;
+
+    public void Card(String cardUrl, String cardTitle, String cardCategory, String cardContent) {
+        this.cardUrl = cardUrl;
+        this.cardTitle = cardTitle;
+        this.cardCategory = cardCategory;
+        this.cardContent = cardContent;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "cardId=" + cardId +
+                ", cardUrl='" + cardUrl + '\'' +
+                ", cardTitle='" + cardTitle + '\'' +
+                ", cardCategory='" + cardCategory + '\'' +
+                ", cardContent='" + cardContent + '\'' +
+                '}';
+    }
 }

@@ -2,6 +2,7 @@ package kr.or.interfacenotice.controller;
 
 import kr.or.interfacenotice.domain.Card;
 import kr.or.interfacenotice.service.NaverD2Service;
+import kr.or.interfacenotice.service.WooWaBrosService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,13 @@ import java.util.List;
 public class HomeController {
 
     private final NaverD2Service naverD2Service;
+    private final WooWaBrosService wooWaBrosService;
 
     @Autowired
-    public HomeController(NaverD2Service naverD2Service) {
+    public HomeController(NaverD2Service naverD2Service,
+                          WooWaBrosService wooWaBrosService) {
         this.naverD2Service = naverD2Service;
+        this.wooWaBrosService = wooWaBrosService;
     }
 
     @RequestMapping("/")
@@ -28,8 +32,6 @@ public class HomeController {
 
         List<Card> cardList= naverD2Service.NaverD2CardList();
 
-        log.info(cardList.toString());
-
         model.addAttribute("cardList", cardList);
 
         return "home";
@@ -37,8 +39,9 @@ public class HomeController {
 
     @GetMapping("/init")
     public void init(){
-        log.info("NAVER D2 게시물 크롤링 중 ......");
+        log.info("전체 게시물 크롤링 중 ......");
 
         naverD2Service.NaverD2Crawl();
+        wooWaBrosService.WooWaBrosCrawl();
     }
 }

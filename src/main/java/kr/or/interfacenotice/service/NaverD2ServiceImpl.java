@@ -16,9 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 @Log
-
+@Service
 public class NaverD2ServiceImpl implements NaverD2Service {
 
     @Inject
@@ -27,7 +26,7 @@ public class NaverD2ServiceImpl implements NaverD2Service {
     @Override
     public List<Card> NaverD2Crawl(){
 
-        String url = "https://d2.naver.com/api/v1/contents?categoryId=2&page=0&size=500";
+        String url = "https://d2.naver.com/api/v1/contents?categoryId=2&page=0&size=1000";
         Document doc = null;
 
         try {
@@ -79,7 +78,12 @@ public class NaverD2ServiceImpl implements NaverD2Service {
 
         List<Card> cardList = new ArrayList<>();
 
+        /*
         cardRepository.findAll().forEach(cardList::add);
+        */
+
+        cardList = cardRepository.RandomCardList();
+
         return cardList;
     }
 }
