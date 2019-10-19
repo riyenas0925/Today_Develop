@@ -28,30 +28,7 @@
             <%@ include file="include/navbar.jsp" %>
 
             <div class="content">
-                <div class="row">
-                    <c:forEach items="${cardList}" var="cardList">
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="<c:out value="${cardList.cardColor}"/>" style="border-top: 5px solid;">
-                                    <div class="card-header">
-                                        <h3 class="card-title">
-                                            <a href='<c:out value="${cardList.cardUrl}"/>'>
-                                                <c:out value="${cardList.cardTitle}"/>
-                                            </a>
-                                        </h3>
-                                        <h5 class="card-category"><i class="tim-icons icon-bell-55 text-primary"></i> <c:out value="${cardList.cardCategory}"/></h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <a><c:out value="${cardList.cardContent}"/></a>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        <a><c:out value="${cardList.cardDate}"/></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </c:forEach>
+                <div class="row" id="cards">
                 </div>
             </div>
             <%@ include file="include/footer.jsp" %>
@@ -61,3 +38,43 @@
 <%@ include file="include/plugins.jsp" %>
 </body>
 </html>
+
+
+<script language="JavaScript">
+    $(document).ready(function () {
+        getAllList();
+        
+        function getAllList() {
+            $.getJSON("devBlog/random", function (data) {
+                var str = "";
+                $(data).each(
+                    function () {
+                        str += '<div class="col-lg-4">'
+                        str +=     '<div class="card">'
+                        str +=         '<div class="' + this.cardColor + '" style="border-top: 5px solid;">';
+                        str +=             '<div class="card-header">';
+                        str +=                 '<h3 class="card-title">';
+                        str +=                     '<a href="' + this.cardUrl +'">'
+                        str +=                         this.cardTitle
+                        str +=                     '</a>';
+                        str +=                 '</h3>';
+                        str +=                 '<h5 class="card-category">';
+                        str +=                     '<i class="tim-icons icon-bell-55 text-primary"></i>';
+                        str +=                      this.cardCategory;
+                        str +=                 '</h5>';
+                        str +=             '</div>';
+                        str +=             '<div class="card-body">';
+                        str +=                 '<a>' + this.cardContent +'</a>';
+                        str +=             '</div>';
+                        str +=             '<div class="card-footer text-muted">';
+                        str +=                 '<a>' + this.cardDate +'</a>';
+                        str +=             '</div>';
+                        str +=         '</div>';
+                        str +=     '</div>';
+                        str += '</div>';
+                    });
+                $("#cards").html(str);
+            });
+        }
+    });
+</script>
