@@ -19,6 +19,10 @@ public class CardServiceImpl implements CardService{
 
         List<Card> cardList = cardRepository.RandomCardList();
 
+        if(cardList.isEmpty()){
+            cardList = null;
+        }
+        
         return cardList;
     }
 
