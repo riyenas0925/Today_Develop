@@ -5,7 +5,7 @@
         <ul class="nav">
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link">
-                    Creative Tim
+                    Developer
                 </a>
             </li>
             <li class="nav-item">
@@ -20,11 +20,8 @@
             </li>
         </ul>
         <div class="copyright">
-            ©
-            <script>
-                document.write(new Date().getFullYear())
-            </script>2018 made with <i class="tim-icons icon-heart-2"></i> by
-            <a href="javascript:void(0)" target="_blank">Creative Tim</a> for a better web.
+            ©made with <i class="tim-icons icon-heart-2"></i> by Developer
+            <a href="https://github.com/riyenas0925" target="_blank">Riyenas0925</a> for a better develop.
         </div>
     </div>
 </footer>
