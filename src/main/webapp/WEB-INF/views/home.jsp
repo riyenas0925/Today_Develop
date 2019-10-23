@@ -54,7 +54,7 @@
                         str +=         '<div class="' + this.cardColor + '" style="border-top: 5px solid;">';
                         str +=             '<div class="card-header">';
                         str +=                 '<h3 class="card-title">';
-                        str +=                     '<a href="' + this.cardUrl +'">'
+                        str +=                     '<a href="' + this.cardUrl +'" target="_blank" rel="noopener">'
                         str +=                         this.cardTitle
                         str +=                     '</a>';
                         str +=                 '</h3>';
