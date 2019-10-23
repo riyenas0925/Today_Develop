@@ -9,4 +9,4 @@ branches:
 # Travis CI
 cache:
   directories:
-    - $HOME/.m2a
+    - $HOME/.m2a    
