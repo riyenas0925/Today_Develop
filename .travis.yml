@@ -5,6 +5,9 @@ jdk:
 branches:
   only:
     - develop
+    
+before_install:
+  - chmod +x mvnw
 
 # Travis CI
 cache:
