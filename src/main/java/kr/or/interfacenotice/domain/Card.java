@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -33,6 +35,9 @@ public class Card {
     private String cardColor;
 
     private LocalDate cardDate;
+    
+    @OneToMany(mappedBy = "card")
+    private List<UserCard> participationList = new ArrayList<>();
 
     public void Card(String cardUrl, String cardTitle, String cardCategory, String cardContent) {
         this.cardUrl = cardUrl;
