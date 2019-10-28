@@ -1,6 +1,8 @@
 package kr.or.interfacenotice.controller;
 
 import kr.or.interfacenotice.domain.Card;
+import kr.or.interfacenotice.domain.User;
+import kr.or.interfacenotice.repository.CardRepository;
 import kr.or.interfacenotice.service.CardService;
 import kr.or.interfacenotice.service.LezhinService;
 import kr.or.interfacenotice.service.NaverD2Service;
@@ -12,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 @Log
 @Controller

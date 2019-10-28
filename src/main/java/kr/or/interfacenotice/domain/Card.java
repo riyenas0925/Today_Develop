@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardId;
 
     @Column(name = "cardUrl", length = 1024)

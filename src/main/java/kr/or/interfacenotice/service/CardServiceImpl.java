@@ -31,4 +31,10 @@ public class CardServiceImpl implements CardService{
 
         return cardRepository.findByDevBlog(devBlog);
     }
+    
+    @Override
+    public List<Card> findByUserCard(String userName){
+
+        return cardRepository.findByUserCard(userName);
+    }
 }

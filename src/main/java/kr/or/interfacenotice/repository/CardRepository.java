@@ -13,4 +13,14 @@ public interface CardRepository extends CrudRepository<Card, Long> {
 
     @Query(value = "SELECT * FROM CARD WHERE CARDCATEGORY= ?1", nativeQuery = true)
     List<Card> findByDevBlog(String devBlog);
+    
+    String query =  "SELECT c.*,  u.name  FROM user u " +
+                    "INNER JOIN usercard uc " +
+                    "ON u.userId = uc.userId " +
+                    "INNER JOIN card c " + 
+                    "ON c.cardId = uc.cardId " +
+                    "where u.name = ?1";
+    
+    @Query(value = query, nativeQuery = true)
+    List<Card> findByUserCard(String userName);
 }

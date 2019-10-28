@@ -75,7 +75,7 @@
                     });
                 $("#cards").html(str);
             }).fail(function (result) {
-                window.location.replace("/devBlog/init");
+                //window.location.replace("/devBlog/init");
             });
         }
     });

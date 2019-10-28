@@ -8,4 +8,6 @@ public interface CardService {
     public List<Card> randomCardList();
 
     public List<Card> findByDevBlog(String devBlog);
+    
+    public List<Card> findByUserCard(String userName);
 }
