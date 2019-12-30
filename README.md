@@ -1,4 +1,4 @@
-# Today Develop [![Build Status](https://travis-ci.org/riyenas0925/Project_Today_Develop.svg?branch=develop)](https://travis-ci.org/riyenas0925/Project_Today_Develop)
+# Today Develop [![Build Status](https://travis-ci.org/riyenas0925/Today-Develop.svg?branch=develop)](https://travis-ci.org/riyenas0925/Project_Today_Develop)
 > [Todaydev 바로가기](http://todaydev.herokuapp.com/)  
 > 기술블로그들에서 무작위로 9개의 게시글을 보여주는 사이트
 
