@@ -29,7 +29,7 @@ public class DevBlogRestController {
             e.printStackTrace();
             entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
+		
         return entity;
     }
 }

@@ -19,7 +19,7 @@
 
 <%@ include file="include/head.jsp" %>
 
-    <body class="white-content">
+<body class="white-content">
     <div class="wrapper">
 
         <%@ include file="include/sidebar.jsp" %>
@@ -28,8 +28,7 @@
             <%@ include file="include/navbar.jsp" %>
 
             <div class="content">
-                <div class="row" id="cards">
-                </div>
+                <div class="row" id="cards"></div>
             </div>
             <%@ include file="include/footer.jsp" %>
         </div>
@@ -41,42 +40,83 @@
 
 
 <script language="JavaScript">
-    $(document).ready(function () {
-        getAllList();
+    $(document).ready(function () {		
+        getRandCards();
         
-        function getAllList() {
-            $.getJSON("devBlog/random", function (data) {
-                var str = "";
-                $(data).each(
-                    function () {
-                        str += '<div class="col-lg-4">'
-                        str +=     '<div class="card">'
-                        str +=         '<div class="' + this.cardColor + '" style="border-top: 5px solid;">';
-                        str +=             '<div class="card-header">';
-                        str +=                 '<h3 class="card-title">';
-                        str +=                     '<a href="' + this.cardUrl +'" target="_blank" rel="noopener">'
-                        str +=                         this.cardTitle
-                        str +=                     '</a>';
-                        str +=                 '</h3>';
-                        str +=                 '<h5 class="card-category">';
-                        str +=                     '<i class="tim-icons icon-bell-55 text-primary"></i>';
-                        str +=                      this.cardCategory;
-                        str +=                 '</h5>';
-                        str +=             '</div>';
-                        str +=             '<div class="card-body">';
-                        str +=                 '<a>' + this.cardContent +'</a>';
-                        str +=             '</div>';
-                        str +=             '<div class="card-footer text-muted">';
-                        str +=                 '<a>' + this.cardDate +'</a>';
-                        str +=             '</div>';
-                        str +=         '</div>';
-                        str +=     '</div>';
-                        str += '</div>';
-                    });
-                $("#cards").html(str);
-            }).fail(function (result) {
-                window.location.replace("/devBlog/init");
-            });
+        function getRandCards() {
+			$.ajax({
+				type : "GET",
+				url : "devBlog/random",
+				dataType : "json",
+				beforeSend:function(){
+					$("#cards").html(createSkeleton());
+				},
+				complete:function(){
+
+				},
+				success : function(data, status, xhr) {	
+					$("#cards").html(createCard(data));
+				}, 
+				error: function(jqXHR, textStatus, errorThrown) {
+                	window.location.replace("/devBlog/init");
+				}
+			});
         }
+		
+		function createSkeleton() {
+			
+			var str = "";
+			
+			str += 	'<div class="col-lg-4">'
+			str += 		'<div class="ph-item" style="border:0px;background-color: rgb(245, 246, 250);">'
+			str +=			'<div class="ph-col-12">'
+			str +=				'<div class="ph-row">'
+			str +=					'<div class="ph-col-6 big"></div>'
+			str +=					'<div class="ph-col-6 empty"></div>'
+			str +=					'<div class="ph-col-2 big"></div>'
+			str +=				'</div>'
+			str +=				'<div class="ph-picture"></div>'
+			str +=				'<div class="ph-row">'
+			str +=					'<div class="ph-col-2"></div>'
+			str +=				'</div>'			
+			str +=			'</div>'
+			str += 		'</div>'
+			str += 	'</div>'
+			
+			return str.repeat(9);
+		}
+		
+		function createCard(data) {
+			var str = "";
+			$(data).each(
+				function () {
+					str += '<div class="col-lg-4">'
+					str +=     '<div class="card">'
+					str +=         '<div class="' + this.cardColor + '" style="border-top: 5px solid;">';
+					str +=             '<div class="card-header">';
+					str +=                 '<h3 class="card-title">';
+					str +=                     '<a href="' + this.cardUrl +'" target="_blank" rel="noopener">'
+					str +=                         this.cardTitle
+					str +=                     '</a>';
+					str +=                 '</h3>';
+					str +=                 '<h5 class="card-category">';
+					str +=                     '<i class="tim-icons icon-bell-55 text-primary"></i>';
+					str +=                      this.cardCategory;
+					str +=                 '</h5>';
+					str +=             '</div>';
+					str +=             '<div class="card-body">';
+					str +=                 '<a>' + this.cardContent +'</a>';
+					str +=             '</div>';
+					str +=             '<div class="card-footer text-muted">';
+					str +=                 '<a>' + this.cardDate +'</a>';
+					str +=             '</div>';
+					str +=         '</div>';
+					str +=     '</div>';
+					str += '</div>';
+				}
+			);
+			
+			return str;
+		};
     });
 </script>

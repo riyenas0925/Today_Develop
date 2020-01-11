@@ -18,4 +18,22 @@
     <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
+
+	
+	<style type="text/css">
+		@keyframes phAnimation {
+			0% {
+				background: rgba(0, 0, 0, 0.0);
+			}
+			50% {
+				background: rgba(0, 0, 0, 0.03);
+			}
+			100% {
+				background: rgba(0, 0, 0, 0.0);
+			}
+		}	
+	</style>
+
 </head>
