@@ -9,7 +9,8 @@ pipeline {
 
     stage('Clean') {
       steps {
-        sh '''cd Today_Develop
+        sh '''ls -al
+cd Today_Develop
 chmod +x mvnw
 ./mvnw clean'''
       }
