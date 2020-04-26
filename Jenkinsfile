@@ -1,11 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('clean') {
+    stage('Source') {
+      steps {
+        git(url: 'https://github.com/riyenas0925/Today_I_Learned', credentialsId: 'riyenas0925')
+      }
+    }
+
+    stage('Clean') {
       steps {
         sh '''ls -al
-./mvnw clean / Shell Script
-'''
+chmod +x mvnw
+./mvnw clean'''
       }
     }
 
