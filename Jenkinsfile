@@ -16,8 +16,13 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''chmod +x mvnw
-./mvnw install'''
+        sh './mvnw install'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploy"'
       }
     }
 
