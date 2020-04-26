@@ -1,9 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Source') {
+    stage('Clone repository') {
       steps {
-        git(url: 'https://github.com/riyenas0925/Today_I_Learned', credentialsId: 'riyenas0925', branch: 'develop')
+        sh '''git clone https://github.com/riyenas0925/Today_Develop.git
+cd Today_Develop'''
       }
     }
 
