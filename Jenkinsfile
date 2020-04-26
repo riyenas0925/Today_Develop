@@ -9,17 +9,14 @@ pipeline {
 
     stage('Clean') {
       steps {
-        sh '''ls -al
-cd Today_Develop
-chmod +x mvnw
+        sh '''chmod +x mvnw
 ./mvnw clean'''
       }
     }
 
     stage('Build') {
       steps {
-        sh '''cd Today_Develop
-chmod +x mvnw
+        sh '''chmod +x mvnw
 ./mvnw install'''
       }
     }
