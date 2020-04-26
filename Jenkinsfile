@@ -11,7 +11,13 @@ pipeline {
       steps {
         sh '''cd Today_Develop
 chmod +x mvnw
-./mvnw clean install'''
+./mvnw clean'''
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh './mvnw install'
       }
     }
 
