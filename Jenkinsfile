@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'ubuntu:16.04'
-    }
-
-  }
+  agent any
   stages {
     stage('Clone repository') {
       steps {
