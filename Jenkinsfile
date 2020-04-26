@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Source') {
       steps {
-        git(url: 'https://github.com/riyenas0925/Today_I_Learned', credentialsId: 'riyenas0925')
+        git(url: 'https://github.com/riyenas0925/Today_I_Learned', credentialsId: 'riyenas0925', branch: 'develop')
       }
     }
 
