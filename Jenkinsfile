@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('clean') {
       steps {
-        sh '''./mvnw clean / Shell Script
+        sh '''ls -al
+./mvnw clean / Shell Script
 '''
       }
     }
