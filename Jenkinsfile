@@ -10,9 +10,9 @@ cd Today_Develop'''
 
     stage('Clean') {
       steps {
-        sh '''ls -al
+        sh '''cd Today_Develop
 chmod +x mvnw
-./mvnw clean'''
+./mvnw clean install'''
       }
     }
 
